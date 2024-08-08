@@ -51,3 +51,7 @@ button {
 .operations {
     background-color: aqua;
 }
+
+.operations:focus {
+    background-color: bisque;
+}
