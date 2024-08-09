@@ -1,6 +1,7 @@
 var num1 = "";
 var num2 = ""; 
 var operator = "";
+var lastPressOp = false;
 const container = document.querySelector('.container');
 const opBtn = document.querySelectorAll('.operations');
 const digBtn = document.querySelectorAll('.digits');
@@ -17,11 +18,11 @@ opBtn.forEach((op) =>
 clearBtn.addEventListener('click', () => clearDisplay());
 
 function digButtonPress(num) {
-    if (operator === "") {
-        num1 += num;
-    }
-    else {
-        num2 += num;
+    if (operator === "") num1 += num;
+    else num2 += num;
+    if (lastPressOp) {
+        displayVal.textContent = "";
+        lastPressOp = false;
     }
     displayVal.textContent += num;
 }
@@ -37,6 +38,7 @@ function opButtonPress(oper) {
         displayVal.textContent = "";
         operator = oper;
     }
+    lastPressOp = true;
 }
 
 function displayInfo() {
