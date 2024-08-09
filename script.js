@@ -17,14 +17,21 @@ opBtn.forEach((op) =>
 clearBtn.addEventListener('click', () => clearDisplay());
 
 function digButtonPress(num) {
-    if (operator === "") num1 += num;
-    else num2 += num;
+    if (operator === "") {
+        num1 += num;
+    }
+    else {
+        num2 += num;
+    }
     displayVal.textContent += num;
 }
 
 function opButtonPress(oper) {
     if (operator !== "") {
         displayInfo();
+        if (oper !== "=") {
+            operator = oper;
+        }
     }
     else {
         displayVal.textContent = "";
@@ -39,6 +46,13 @@ function displayInfo() {
     operator = "";
 }
 
+function clearDisplay() {
+    displayVal.textContent = "";
+    num1 = "";
+    num2 = "";
+    operator = "";
+}
+
 function operate(a, b, op) {
     a = Number(a);
     b = Number(b);
@@ -46,13 +60,6 @@ function operate(a, b, op) {
     if (op === "-") return subtract(a,b);
     if (op === "x") return multiply(a,b);
     if (op === "÷") return divide(a,b);
-}
-
-function clearDisplay() {
-    displayVal.textContent = "";
-    num1 = "";
-    num2 = "";
-    operator = "";
 }
 
 function add(a, b) {
